@@ -19,7 +19,7 @@ coords(cartagena, 10.3997, -75.5144).
 get_weather(City, Weather) :-
     coords(City, Lat, Lon),
     format(string(URL),
-           "https://api.open-meteo.com/v1/forecast?latitude=~f&longitude=~f&current_weather=true",
+           "https://api.open-meteo.com/v1/forecast?latitude=~w&longitude=~w&current_weather=true",
            [Lat, Lon]),
     http_open(URL, Stream, []),
     json_read_dict(Stream, Dict),
