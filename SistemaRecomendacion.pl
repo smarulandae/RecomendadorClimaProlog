@@ -57,3 +57,39 @@ actividad(natacion, interior, [soleado, lluvioso, nublado, tormenta, nevado]).
 actividad(parque, exterior, [soleado, nublado]).
 actividad(videojuegos, interior, [soleado, lluvioso, nublado, tormenta, nevado]).
 
+% Preferencias de los usuarios
+% prefiere(Usuario, Actividad).
+
+prefiere(diego, futbol).
+prefiere(diego, lectura).
+prefiere(diego, parque).
+
+prefiere(santiago, cine).
+prefiere(santiago, videojuegos).
+prefiere(santiago, natacion).
+
+prefiere(esteban, correr).
+prefiere(esteban, basquetbol).
+prefiere(esteban, lectura).
+
+prefiere(camilo, correr).
+prefiere(camilo, natacion).
+prefiere(camilo, cine).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Reglas lógicas
+% Una actividad es viable si su clima está permitido
+
+viable(Actividad, Clima) :-
+    actividad(Actividad, _, ListaClimas),
+    member(Clima, ListaClimas).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Recomendación final
+% recomendar(Usuario, Ciudad, Actividad).
+
+recomendar(Usuario, Ciudad, Actividad) :-
+    get_weather(Ciudad, Clima),
+    prefiere(Usuario, Actividad),
+    viable(Actividad, Clima).
+
