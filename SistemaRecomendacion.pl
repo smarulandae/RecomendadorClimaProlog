@@ -84,3 +84,12 @@ viable(Actividad, Clima) :-
     actividad(Actividad, _, ListaClimas),
     member(Clima, ListaClimas).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Recomendación final
+% recomendar(Usuario, Ciudad, Actividad).
+
+recomendar(Usuario, Ciudad, Actividad) :-
+    get_weather(Ciudad, Clima),
+    prefiere(Usuario, Actividad),
+    viable(Actividad, Clima).
+
