@@ -12,7 +12,9 @@ coords(bogota,     4.6097, -74.0817).
 coords(cali,       3.4372, -76.5225).
 coords(cartagena, 10.3997, -75.5144).
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % Obtener clima desde Open-Meteo
 % get_weather(City, Weather).
 % Weather -> etiqueta simplificada (soleado, nublado, lluvioso, nevado, tormenta)
@@ -27,6 +29,7 @@ get_weather(City, Weather) :-
     close(Stream),
     Code = Dict.current_weather.weathercode,
     traducir_codigo(Code, Weather).
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Códigos Open-Meteo 
@@ -53,3 +56,4 @@ actividad(correr, exterior, [soleado, nublado]).
 actividad(natacion, interior, [soleado, lluvioso, nublado, tormenta, nevado]).
 actividad(parque, exterior, [soleado, nublado]).
 actividad(videojuegos, interior, [soleado, lluvioso, nublado, tormenta, nevado]).
+
